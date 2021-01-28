@@ -51,7 +51,7 @@ echo '<br';
 //     )";
 
 // if ($db->query($sql) === TRUE) {
-//     echo "Таблица MyGuests создана успешно";
+//     echo "Таблица MyGuests создана успешно";    
 //  } else {
 //     echo "Ошибка создания таблицы: " . $db->error;
 // }
@@ -63,10 +63,11 @@ echo $a1 . ' ' . $a2 . ' ' . $a3 . ' ' . $a4 . ' ' . $a5 . '<br>' ;
 
 echo $tfull;
 
-// $db->query("INSERT INTO `{$name}` (`id`, `q1`, `a1`, `q2`, `a2`, `q3`, `a3`, `q4`, `a4`, `q5`, `a5`, `q6`, `a6`, `b1`, `b2`, `status`) VALUES (NULL, '$q1', '$a1', '$q2', '$a2', '$q3', '$a3', '$q4', '$a4', '$q5', '$a5', '$q6', '$tfull', '99', '99', NULL)");
-    $db->query();
+    // $db->query("INSERT INTO `{$name}` (`id`, `q1`, `a1`, `q2`, `a2`, `q3`, `a3`, `q4`, `a4`, `q5`, `a5`, `q6`, `a6`, `b1`, `b2`, `status`) VALUES (NULL, '$q1', '$a1', '$q2', '$a2', '$q3', '$a3', '$q4', '$a4', '$q5', '$a5', '$q6', '$tfull', '99', '99', NULL)");
+    // $db->query("INSERT INTO `nametable` (`id`, `name`) VALUES (NULL, '$name')");
 
-
+$link = 'http://test/test.php?name='.$name;
+echo '<a href="'.$link.'">'.$link.'</a>';
 
 print_r($_POST);
 echo $t1;

@@ -24,7 +24,7 @@
                 </thead>
                 <tbody>
                     <?php 
-                    $names = $db->query("SELECT * FROM `nametable`");
+                    $names = $db->query("SELECT * FROM `nametable` ");
                     $names = mysqli_fetch_all($names);
                     // var_dump($names);
                     // $names = mysqli_query($db, query:"SELECT * FROM `paper`");
