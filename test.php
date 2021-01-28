@@ -12,7 +12,11 @@
         $q5 = $nam[9];
         $q6 = $nam[11];
 
-        
+        $str5 = explode(" ", $nam[15]);
+        $str6 = explode(" ", $nam[16]);
+        print_r($str5);
+        echo ($str6[1]);
+        echo $_SESSION['user'];
         
     }
                    
@@ -21,12 +25,13 @@
     <h1>ne admin</h1>
     <div class="container-md">
         <div class="alert alert-warning">
-            <form method="POST" action="vendor/new.php">
+            <form method="POST" action="vendor/checktest.php">
                 <h2>Название опроса</h2>
                 <input class="form-control col-5" disabled required type="text" value="<?= $name ?>" name="name">
                 <h2>Тип 1</h2>
                 <input class="form-control col-5" required type="text" value="<?= $q1?>" disabled placeholder="Вопрос" name="q1">
-                <input class="form-control col-5" required type="number" placeholder="Ответ" name="a1">  
+                <input class="form-control col-5" required type="number" placeholder="Ответ" name="a1"> 
+                
                 <hr>
 
                 <h2>Тип 2</h2>
@@ -46,23 +51,29 @@
                 
                 <h2>Тип 5</h2>
                 <input class="form-control col-5" required type="text" value="<?= $q5?>" disabled placeholder="Вопрос" name="q5">
-                <p><input required name="a5" type="radio" value="1">1</p> 
-                <input class="form-control col-4" required type="text" placeholder="n" name="var1">
-                <p><input required name="a5" type="radio" value="2">2</p>
-                <input class="form-control col-4" required type="text" placeholder="n" name="var2">
+                <?php
+                $y=0;
+                while ($y++<2){
+                    echo '
+                    <p><input required name="a5" type="radio" value="'.$y.'">'.$y.'</p> 
+                    <input class="form-control col-4" required type="text" placeholder="'.$str5[$y].'" disabled name="var'.$x.'">
+                    ';
+                } 
+                ?>
                 
                 <hr>
                 <h2>Тип 6</h2>
                 <input class="form-control col-5" type="text" value="<?= $q6?>" disabled placeholder="Вопрос" name="q6">
-                <input class="form-control col-3" type="number" min='1' max='100' placeholder="кол-во баллов" name="b1">
                 <?php
                 $x=0;
                 while ($x++<3){
                     echo '
-                    <p><input type="checkbox" name="t'.$x.'" value="'.$x.'"><input class="form-control col-4" required type="text" placeholder="n" name="v'.$x.'"></p>
+                    <p><input type="checkbox" name="t'.$x.'" value="'.$x.'"><input class="form-control col-4" required type="text" placeholder="'.$str6[$x].'" disabled name="v'.$x.'"></p>
+                    <input type="hidden" name="kol" value="'.$x.'">
+                    <input type="hidden" name="name" value="'.$name.'">
+
                     ';
                 } 
-                // Выводит 12345678910
                 ?>
                 <!-- <p><input type="checkbox" name="t1" value="'1'"><input class="form-control col-4" required type="text" placeholder="n" name="v1"></p> -->
                 <!-- <p><input type="checkbox" name="t2" value="'2'"><input class="form-control col-4" required type="text" placeholder="n" name="v2"></p>

@@ -34,4 +34,4 @@
     $_SESSION['user'] = $user['login'];
     $db->close();
 
-    header('Location: ../admin.php');
+    header('Location: ../adminstart.php');

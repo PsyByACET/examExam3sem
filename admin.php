@@ -5,6 +5,7 @@
     <h1>admin</h1>
     <div class="container-md">
         <div class="alert alert-warning">
+        <a class='btn btn-primary' href='vendor/delete.php?name=".$namem[1]."'>удалить</a>
             <form method="POST" action="vendor/new.php">
                 <input class="form-control col-5" required type="text" placeholder="Название опроса" name="name">
                 <h2>Тип 1</h2>
@@ -29,19 +30,28 @@
                 
                 <h2>Тип 5</h2>
                 <input class="form-control col-5" required type="text" placeholder="Вопрос" name="q5">
-                <p><input required name="a5" type="radio" value="1">1</p> 
-                <input class="form-control col-4" required type="text" placeholder="n" name="var1">
-                <p><input required name="a5" type="radio" value="2">2</p>
-                <input class="form-control col-4" required type="text" placeholder="n" name="var2">
+                <input class="form-control col-3" type="number" min='1' max='100' placeholder="кол-во баллов" name="b5">
+                <?php
+                $y=0;
+                $b = $_POST['pp5'];
+                while ($y++<$b){
+                    echo '
+                    <p><input required name="a5" type="radio" value="'.$y.'">'.$y.'</p> 
+                    <input class="form-control col-4" required type="text" placeholder="n" name="var'.$x.'">
+                    ';
+                } 
+                ?>
                 
                 <a href=""></a>
+                
                 <hr>
                 <h2>Тип 6</h2>
                 <input class="form-control col-5" type="text" placeholder="Вопрос" name="q6">
-                <input class="form-control col-3" type="number" min='1' max='100' placeholder="кол-во баллов" name="b1">
+                <input class="form-control col-3" type="number" min='1' max='100' placeholder="кол-во баллов" name="b6">
                 <?php
                 $x=0;
-                while ($x++<3){
+                $a = $_POST['pp6'];
+                while ($x++<$a){
                     echo '
                     <p><input type="checkbox" name="t'.$x.'" value="'.$x.'"><input class="form-control col-4" required type="text" placeholder="n" name="v'.$x.'"></p>
                     ';
@@ -60,6 +70,89 @@
         </div>
     </div>
 </section>
+<section class="main-s">
+        <div class="container">
+        <h1>Сессии</h1>
+        <div class="paper alert alert-warning">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">name</th>
+                        <th scope="col">удаление</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                    $names = $db->query("SELECT * FROM `nametable` ");
+                    $names = mysqli_fetch_all($names);
+                    // var_dump($names);
+                    // $names = mysqli_query($db, query:"SELECT * FROM `paper`");
+                    // pring_r($names);
+                    // $names = mysqli_fetch_all($names);
+                    // pring_r($names);
+                    foreach($names as $namem) {
+                        // ehco "<h1>admin</h1>";
+                        echo "
+                        <tr>
+                            <th>".$namem[0]."</th>
+                            <td>".$namem[1]."</td>
+                            <td><a class='btn btn-danger' href='vendor/delete.php?name=".$namem[1]."'>удалить</a></td>
+                        </tr>
+                        ";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        </div>
+</section>
+<section class="main-s">
+        <div class="container">
+        <h1>Ответы</h1>
+        <div class="paper alert alert-warning">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Вопрос1</th>
+                        <th scope="col">Вопрос2</th>
+                        <th scope="col">Вопрос3</th>
+                        <th scope="col">Вопрос4</th>
+                        <th scope="col">Вопрос5</th>
+                        <th scope="col">Правильных в 6</th>
+                        <th scope="col">ip</th>
+                        <th scope="col">Дата и время</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                    $score = $db->query("SELECT * FROM `score` ");
+                    $score = mysqli_fetch_all($score);
+
+                    foreach($score as $scor) {
+                        // ehco "<h1>admin</h1>";
+                        echo "
+                        <tr>
+                            <th>".$scor[0]."</th>
+                            <th>".$scor[2]."</th>
+                            <td>".$scor[3]."</td>
+                            <th>".$scor[4]."</th>
+                            <td>".$scor[5]."</td>
+                            <th>".$scor[6]."</th>
+                            <td>".$scor[8]."</td>
+
+                            <td>".$scor[11]."</td>
+                            <td>".$scor[12]."</td>
+                        </tr>
+                        ";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </section>
 <?php
     include('foot.php');
 ?>

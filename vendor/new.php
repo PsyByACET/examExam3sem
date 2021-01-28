@@ -24,55 +24,72 @@ $t3 = $_POST['t3'];
 
 $k = 1;
 $i = 1;
+$stroke6 = '';
+$stroke5 = '';
 while($_POST["v$i"] != '') {
-    echo $_POST["v$i"];
+    // echo $_POST["v$i"];
+    $stroke6 = $stroke6. ' ' .$_POST["v$i"];
     $i++;
+    
+    // echo '<br>';
+}
+$j = 1;
+while($_POST["var$j"] != '') {
+    echo $_POST["var$j"];
+    $stroke5 = $stroke5. ' ' .$_POST["var$j"];
+    $j++;
     echo '<br>';
 }
-echo $i-1;
-echo '<br';
-// $sql = "CREATE TABLE `$name` (
-//     `id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-//     `q1` VARCHAR(255) NOT NULL,
-//     `a1` INT(100) NOT NULL,
-//     `q2` VARCHAR(255) NOT NULL,
-//     `a2` INT(100) NOT NULL,
-//     `q3` VARCHAR(255) NOT NULL,
-//     `a3` VARCHAR(31) NOT NULL,
-//     `q4` VARCHAR(255) NOT NULL,
-//     `a4` VARCHAR(255) NOT NULL,
-//     `q5` VARCHAR(255) NOT NULL,
-//     `a5` INT(11) NOT NULL,
-//     `q6` VARCHAR(255) NOT NULL,
-//     `a6` VARCHAR(255) NOT NULL,
-//     `b1` INT(11) NOT NULL,
-//     `b2` INT(11) NOT NULL,
-//     `status` TINYINT(2) NULL
-//     )";
+// echo $i-1;
+// echo '<br';
+$sql = "CREATE TABLE `$name` (
+    `id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `q1` VARCHAR(255) NOT NULL,
+    `a1` INT(100) NOT NULL,
+    `q2` VARCHAR(255) NOT NULL,
+    `a2` INT(100) NOT NULL,
+    `q3` VARCHAR(255) NOT NULL,
+    `a3` VARCHAR(31) NOT NULL,
+    `q4` VARCHAR(255) NOT NULL,
+    `a4` VARCHAR(255) NOT NULL,
+    `q5` VARCHAR(255) NOT NULL,
+    `a5` INT(11) NOT NULL,
+    `q6` VARCHAR(255) NOT NULL,
+    `a6` VARCHAR(255) NOT NULL,
+    `b1` INT(11) NOT NULL,
+    `b2` INT(11) NOT NULL,
+    `m5` VARCHAR(255) NOT NULL,
+    `m6` VARCHAR(255) NOT NULL,
+    `status` TINYINT(2) NULL
+    )";
 
-// if ($db->query($sql) === TRUE) {
-//     echo "Таблица MyGuests создана успешно";    
-//  } else {
-//     echo "Ошибка создания таблицы: " . $db->error;
-// }
+if ($db->query($sql) === TRUE) {
+    echo "Таблица MyGuests создана успешно";    
+ } else {
+    echo "Ошибка создания таблицы: " . $db->error;
+}
 
 
 $tfull = $t1 . ' ' . $t2 . ' ' . $t3 . ' ';
-echo $q1 . ' ' . $q2 . ' ' . $q3 . ' ' . $q4 . ' ' . $q5 . ' ' . $q6 . '<br>' ;
-echo $a1 . ' ' . $a2 . ' ' . $a3 . ' ' . $a4 . ' ' . $a5 . '<br>' ;
+// echo $q1 . ' ' . $q2 . ' ' . $q3 . ' ' . $q4 . ' ' . $q5 . ' ' . $q6 . '<br>' ;
+// echo $a1 . ' ' . $a2 . ' ' . $a3 . ' ' . $a4 . ' ' . $a5 . '<br>' ;
 
-echo $tfull;
+// echo $tfull;
 
-    // $db->query("INSERT INTO `{$name}` (`id`, `q1`, `a1`, `q2`, `a2`, `q3`, `a3`, `q4`, `a4`, `q5`, `a5`, `q6`, `a6`, `b1`, `b2`, `status`) VALUES (NULL, '$q1', '$a1', '$q2', '$a2', '$q3', '$a3', '$q4', '$a4', '$q5', '$a5', '$q6', '$tfull', '99', '99', NULL)");
-    // $db->query("INSERT INTO `nametable` (`id`, `name`) VALUES (NULL, '$name')");
+    $db->query("INSERT INTO `{$name}` (`id`, `q1`, `a1`, `q2`, `a2`, `q3`, `a3`, `q4`, `a4`, `q5`, `a5`, `q6`, `a6`, `b1`, `b2`, `m5`, `m6`, `status`) VALUES (NULL, '$q1', '$a1', '$q2', '$a2', '$q3', '$a3', '$q4', '$a4', '$q5', '$a5', '$q6', '$tfull', '99', '99', '$stroke5', '$stroke6', NULL)");
+    $db->query("INSERT INTO `nametable` (`id`, `name`) VALUES (NULL, '$name')");
 
-$link = 'http://test/test.php?name='.$name;
+$link = 'http://examphp3sem.std-955.ist.mospolytech.ru/adminstart.php?name='.$name;
 echo '<a href="'.$link.'">'.$link.'</a>';
 
-print_r($_POST);
-echo $t1;
-echo $t3;
-echo $tfull;
-echo '<br>';
-echo '<br>';
-echo '<br>';
+// print_r($_POST);
+// echo $t1;
+// echo $t3;
+// echo '<br>';
+// echo $tfull;
+
+// echo '<br>';
+// echo $stroke6;
+// echo '<br>';
+// echo $stroke5;
+// echo '<br>';
