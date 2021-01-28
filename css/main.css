@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+  font-family: "Oswald", sans-serif;
+}
+body .my_button {
+  height: 30px;
+  text-align: center;
+  font-size: 24px;
+  border-radius: 0px;
+  color: white;
+  box-sizing: content-box;
+  padding-bottom: 15px;
+  background-color: #00efd1;
+}
+body .my_button:hover {
+  color: black;
+}
+body .my_list_button {
+  width: 40vw;
+  min-width: 260px;
+  height: 30px;
+  text-align: center;
+  font-size: 24px;
+  border-radius: 0px;
+  box-sizing: content-box;
+  padding-bottom: 15px;
+  background-color: #00efd1;
+}
+body .my_list_button:hover {
+  background-color: #09f;
+}
+body .form-control {
+  font-size: 1.4rem;
+}
+
+.container {
+  width: 90vw !important;
+  max-width: 2000px;
+}
+
+header {
+  width: 100%;
+  height: 60px;
+  background-color: #00efd1;
+}
+header .head {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+header .head__logo {
+  width: 60px;
+}
+
+.main-s {
+  margin-top: 12vw;
+  margin-bottom: 70px;
+}
+
+footer {
+  width: 100%;
+  height: 40px;
+  background-color: #09f;
+  position: fixed;
+  bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .s-r form {
+    width: 80vw;
+  }
+}
+@media screen and (max-width: 420px) {
+  body .form-control {
+    font-size: 1rem;
+  }
+
+  .s-r .col {
+    min-width: 200px;
+  }
+
+  .list_doc_s table {
+    font-size: 1.1rem;
+  }
+
+  .hos_s__name {
+    position: relative;
+    margin: 0 auto;
+    left: 0;
+  }
+}
+@media print {
+  header {
+    display: none;
+  }
+
+  footer {
+    display: none;
+  }
+
+  .back-btn {
+    display: none;
+  }
+
+  .med_s {
+    font-family: serif;
+  }
+  .med_s input {
+    background-color: #fff;
+    color: black;
+  }
+}
